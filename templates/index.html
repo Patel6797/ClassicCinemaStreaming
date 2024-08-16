@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Reel Classics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Golden Reel Classics</h1>
+    <ul>
+        {% for movie in movies %}
+        <li>
+            <h2>{{ movie.title }} ({{ movie.year }})</h2>
+            <p><strong>Director:</strong> {{ movie.director }}</p>
+            <p>{{ movie.description }}</p>
+            <a href="{{ url_for('watch', movie_id=movie.id) }}">Watch Now</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_movie') }}">Add a New Movie</a>
+</body>
+</html>
